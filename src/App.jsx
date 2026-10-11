@@ -12,7 +12,7 @@ function App() {
         <Todo />
         <Todo />
       </div>
-      { /* <Modal /> */}
+      <Modal /> 
     </div>
   );
 }
