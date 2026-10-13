@@ -1,16 +1,18 @@
-import Modal from "./components/Modal.jsx"
-
-function Modal(){
+function Modal({title}) {
+  console.log(title)
   return (
-      <>
-        <div className="modal">
-          <p className="modal__title">Are you sure?</p>
-          <div className="modal__buttons">Cancel</div>
-          <div className="modal__buttons">Confirm</div>
+    <>
+      <div className="modal">
+        <p className="modal__title">{title}</p>
+        <div className="modal__buttons">
+          <button onClick={() => console.log('cancel')}className="btn btn__cancel">Cancel</button>
+          <button onClick={() => console.log('confirm')}className="btn">Confirm</button>
         </div>
-        <div className="backdrop" />
-      </>
-  )
+        
+      </div>
+      <div className="backdrop" />
+    </>
+  );
 }
 
 export default Modal;
