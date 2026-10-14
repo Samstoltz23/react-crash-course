@@ -2,11 +2,22 @@ import "./App.css";
 import Todo from "./components/Todo.jsx";
 import Title from "./components/Title.jsx";
 import Modal from "./components/Modal.jsx";
+import Counter from "./components/Counter.jsx;"
 import React, { useState } from 'react';
 
 function App() {
+/**
+ * 1. Create a "Counter.jsk" component
+ * 2. Create a default 'count' of 0
+ * 3. Create a button to increment 'count' by 1
+ * 4. Create a button to decrement 'count' by 1
+ * 5. Import your Counter in App.jsx and test it
+ */
+return <Counter />
+
+
   const [showModal, setShowModal] = useState(false)
-  setShowModal(false)
+
   return (
     <div>
       <Title />
@@ -14,7 +25,7 @@ function App() {
         <input type="text" onChange={(event) => {
           console.log(event.target.value)
         }}/>
-        <button >Add todo</button>
+        <button onClick={() => setShowModal(true)}>Add todo</button>
       </div>
       <div className="todo__wrapper">
         <Todo title="Finish Frontend Simplified" />
@@ -61,3 +72,9 @@ export default App;
 //    useEffect:
 
 // Conditional Rendering: rendering a component when a certain condition is met
+
+// const [state, setState] = useState(false);
+
+// state: state variable 
+// setState: function that changes the state variable 
+// false: default value
