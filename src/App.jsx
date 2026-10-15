@@ -2,21 +2,24 @@ import "./App.css";
 import Todo from "./components/Todo.jsx";
 import Title from "./components/Title.jsx";
 import Modal from "./components/Modal.jsx";
-import Counter from "./components/Counter.jsx;"
+import Counter from "./components/Counter.jsx";
 import React, { useState } from 'react';
 
 function App() {
-/**
- * 1. Create a "Counter.jsk" component
- * 2. Create a default 'count' of 0
- * 3. Create a button to increment 'count' by 1
- * 4. Create a button to decrement 'count' by 1
- * 5. Import your Counter in App.jsx and test it
- */
-return <Counter />
-
-
   const [showModal, setShowModal] = useState(false)
+
+  function onTodoDelete(){
+    setShowModal(true)
+    console.log('onTodoDelete()')
+  }
+
+  function cancelModal(){
+    setShowModal(false)
+  }
+
+  function confirmModal(){
+    setShowModal(false)
+  }
 
   return (
     <div>
@@ -28,11 +31,11 @@ return <Counter />
         <button onClick={() => setShowModal(true)}>Add todo</button>
       </div>
       <div className="todo__wrapper">
-        <Todo title="Finish Frontend Simplified" />
-        <Todo title="Finish interview section"/>
-        <Todo title="Land a $100k job"/>
+        <Todo onTodoDelete={onTodoDelete} title="Finish Frontend Simplified" />
+        <Todo onTodoDelete={onTodoDelete} title="Finish interview section"/>
+        <Todo onTodoDelete={onTodoDelete} title="Land a $100k job"/>
       </div>
-      {showModal && <Modal title="Confirm Delete?"/>}
+      {showModal && <Modal cancelModal={cancelModal} confirmModal={confirmModal} title="Confirm Delete?"/>}
     </div>
   );
 }

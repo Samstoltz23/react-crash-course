@@ -1,26 +1,45 @@
 import React, {useState} from 'react';
 
 function Counter(){
-  const [cart, setCart] = useState({
-    item: "apple",
-    quantity: 0, 
-});
+  const[arr, setArr] = useState([])
 
-function addApple(){
-  setCart(prevCart => ({
-    ...prevCart,
-    quantity:1,
-  }))
-}
+  function addPlus(){
+    setArr(prevArr => [...prevArr, "+"])
+  }
 
-  return(
-    <div>
-      <button onClick={() => null}>-</button>
-      {cart.quantity}
-      {cart.item}
-      <button onClick={addApple}>+</button>
-    </div>
-  );
+  function addMinus(){
+    setArr(prevArr => [...prevArr, "-"])
+  }
+
+ return (
+  <div>
+    <button onClick={addMinus}>+</button>
+    <button onClick={addPlus}>-</button>
+    {arr.toString()}
+  </div>
+ )
 }
 
 export default Counter
+
+
+// use a callback
+//  setArr(prevArr => prevArr + )
+
+// Numbers
+//  setNum(10)
+//  setNum(prevNum => prevNum +10)
+
+// Booleans 
+//  setBool(true)
+//  setBool(prevBool => !prevBool)
+
+// Strings 
+//  setSelectionRange('Hello World')
+//  setStr(prevStr => prevStr + 'simplified')
+
+//Objects
+//  setObj(preObj => ({...prevObj, quantity:prevObj.quantity + 1}))
+
+//Arrays
+//  setArr(prevArr => ([...prevArr, 5]))

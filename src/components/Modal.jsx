@@ -1,12 +1,12 @@
-function Modal({title}) {
+function Modal({title, cancelModal, confirmModal}) {
   console.log(title)
   return (
     <>
       <div className="modal">
         <p className="modal__title">{title}</p>
         <div className="modal__buttons">
-          <button onClick={() => console.log('cancel')}className="btn btn__cancel">Cancel</button>
-          <button onClick={() => console.log('confirm')}className="btn">Confirm</button>
+          <button onClick={cancelModal}className="btn btn__cancel">Cancel</button>
+          <button onClick={confirmModal}className="btn">Confirm</button>
         </div>
         
       </div>
