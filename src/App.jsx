@@ -1,41 +1,26 @@
 import "./App.css";
-import Todo from "./components/Todo.jsx";
-import Title from "./components/Title.jsx";
-import Modal from "./components/Modal.jsx";
-import Counter from "./components/Counter.jsx";
-import React, { useState } from 'react';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Contact from './pages/Contact.jsx';
 
 function App() {
-  const [showModal, setShowModal] = useState(false)
-
-  function onTodoDelete(){
-    setShowModal(true)
-    console.log('onTodoDelete()')
-  }
-
-  function cancelModal(){
-    setShowModal(false)
-  }
-
-  function confirmModal(){
-    setShowModal(false)
-  }
+ 
 
   return (
     <div>
-      <Title />
-      <div>
-        <input type="text" onChange={(event) => {
-          console.log(event.target.value)
-        }}/>
-        <button onClick={() => setShowModal(true)}>Add todo</button>
-      </div>
-      <div className="todo__wrapper">
-        <Todo onTodoDelete={onTodoDelete} title="Finish Frontend Simplified" />
-        <Todo onTodoDelete={onTodoDelete} title="Finish interview section"/>
-        <Todo onTodoDelete={onTodoDelete} title="Land a $100k job"/>
-      </div>
-      {showModal && <Modal cancelModal={cancelModal} confirmModal={confirmModal} title="Confirm Delete?"/>}
+      <Router>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
@@ -81,3 +66,28 @@ export default App;
 // state: state variable 
 // setState: function that changes the state variable 
 // false: default value
+
+
+// React Routing
+
+//Routing lets you navigate around your website - changing the url of your page
+
+
+//  useEffect(() => {
+//      console.log('ONLY on mount')
+//    }, []) 
+
+//    // If you have an empty array, it runs on mount
+
+//   useEffect(() => {
+//     console.log(`on mount AND on ${showModal} change`)
+//   }, [showModal])
+
+//   // If its an array with dependencies inside of it, it will run on mount AND when the dependencies change
+
+
+//    useEffect(() => {
+//      console.log('EVERY render')
+//    })
+
+//   // If you have nothing, it will show on mount after every single render
